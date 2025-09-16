@@ -42,6 +42,12 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-special: oklch(22.324% 0.00154 16.369);
+
+  --gradient-primary: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
+  --gradient-card: linear-gradient(135deg, hsl(0 0% 6%), hsl(0 0% 12%));
+  --shadow-elegant: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
+  --shadow-glow: 0 0 20px hsl(0 0% 100% / 0.1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root {
