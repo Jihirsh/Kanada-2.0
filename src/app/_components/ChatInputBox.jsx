@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { SidebarTrigger } from "@/components/ui/sidebar";
 
 function ChatInputBox() {
   const [userSearchInput, setUserSearchInput] = useState();
@@ -43,13 +42,13 @@ function ChatInputBox() {
           </div>
           <h1 className="text-5xl font-bold text-foreground">Kanada</h1>
         </div>
-        <p className="text-xl text-muted-foreground max-w-2xl">
+        <p className="p-2 text-xl text-muted-foreground max-w-2xl">
           Your AI-powered physics companion for learning, problem-solving, and exploration
         </p>
       </div>
       
       {/* Search Bar */}
-      <div className="w-full max-w-4xl mb-6">
+      <div className="w-full max-w-4xl mb-6 px-6">
         <Input
           type="text"
           placeholder={mode === "research" ? "Responds in a way to help you learn" : "Ask Anything"}
@@ -57,7 +56,7 @@ function ChatInputBox() {
         />
       </div>
       {/* Controls Row */}
-      <div className="w-full max-w-4xl mb-8">
+      <div className="w-full max-w-4xl mb-8 px-6">
         <div className="flex items-center justify-between">
           {/* Search/Research buttons */}
           <div className="flex gap-2">
@@ -81,10 +80,6 @@ function ChatInputBox() {
           
           {/* Right side icons */}
           <div className="flex gap-2">
-            {/* Mobile sidebar trigger */}
-            <div className="md:hidden">
-              <SidebarTrigger />
-            </div>
             <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
               <Cpu size={18} />
             </Button>
