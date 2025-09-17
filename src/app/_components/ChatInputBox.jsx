@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ArrowRight,
-  Atom,
   AudioLines,
-  ChartSpline,
+  FlaskConical,
   Cpu,
   Paperclip,
   SearchCode,
@@ -22,16 +21,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 function ChatInputBox() {
   const [userSearchInput, setUserSearchInput] = useState();
   const [searchType, setSearchType] = useState("search");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [mode, setMode] = useState("search");
 
 
   return (
-    <div className="flex flex-col items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center w-full mt-20">
       
       {/* Logo and Title */}
       <div className="text-center mb-12">
@@ -45,76 +47,55 @@ function ChatInputBox() {
           Your AI-powered physics companion for learning, problem-solving, and exploration
         </p>
       </div>
-      <div className="p-2 w-full max-w-2xl border rounded-2xl mt-5">
-        <div className="flex justify-between items-end">
-          <Tabs defaultValue="Search" className="w-[400px]">
-            <TabsContent value="Search">
-              <input
-                type="text"
-                placeholder="Ask Anything"
-                className="w-full p-4 outline-none"
-                onChange={(e) => setUserSearchInput(e.target.value)}
-              />
-            </TabsContent>
-            <TabsContent value="Research">
-              <input
-                type="text"
-                placeholder="Responds in a way to help you learn"
-                className="w-full p-4 outline-none"
-                onChange={(e) => setUserSearchInput(e.target.value)}
-              />
-            </TabsContent>
-            <TabsList>
-              <TabsTrigger
-                value="Search"
-                className={"text-primary"}
-                onClick={() => setSearchType("search")}
-              >
-                <SearchCode /> Search
-              </TabsTrigger>
-              <TabsTrigger
-                value="Research"
-                className={"text-primary"}
-                onClick={() => setSearchType("research")}
-              >
-                <Atom /> Research
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-
-          <div className="flex gap-4 items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="outline-none p-2 rounded-md hover:bg-gray-100">
-                <Cpu className="text-gray-500 h-5 w-5" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button variant="ghost">
-              <ChartSpline className="text-gray-500 h-5 w-5" />
-            </Button>
-            <Button variant="ghost">
-              <SquareRadical className="text-gray-500 h-5 w-5" />
-            </Button>
-            <Button variant="ghost">
-              <Paperclip className="text-gray-500 h-5 w-5" />
+      
+      {/* Search Bar */}
+      <div className="w-full max-w-4xl mb-6">
+        <Input
+          type="text"
+          placeholder={mode === "research" ? "Responds in a way to help you learn" : "Ask Anything"}
+          className="w-full h-16 px-6 text-lg bg-searchbar border-sear rounded-2xl"
+        />
+      </div>
+      {/* Controls Row */}
+      <div className="w-full max-w-4xl mb-8">
+        <div className="flex items-center justify-between">
+          {/* Search/Research buttons */}
+          <div className="flex gap-2">
+            <Button
+              variant={mode === "search" ? "default" : "outline"}
+              className="gap-2 h-10 px-4 cursor-pointer"
+              onClick={() => setMode("search")}
+            >
+              <SearchCode size={16} />
+              Search
             </Button>
             <Button
-              onClick={() => {
-                userSearchInput ? onSearchQuery() : null;
-              }}
+              variant={mode === "research" ? "default" : "outline"}
+              className="gap-2 h-10 px-4 cursor-pointer"
+              onClick={() => setMode("research")}
             >
-              {!userSearchInput ? (
-                <AudioLines className="text-white h-5 w-5" />
-              ) : (
-                <ArrowRight className="text-white h-5 w-5" disabled={loading} />
-              )}
+              <FlaskConical size={16} />
+              Research
+            </Button>
+          </div>
+          
+          {/* Right side icons */}
+          <div className="flex gap-2">
+            {/* Mobile sidebar trigger */}
+            <div className="md:hidden">
+              <SidebarTrigger />
+            </div>
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+              <Cpu size={18} />
+            </Button>
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+              <SquareRadical size={18} />
+            </Button>
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+              <Paperclip size={18} />
+            </Button>
+            <Button size="sm" variant="default" className="h-10 w-10 p-0 bg-primary text-primary-foreground">
+              <AudioLines size={18} />
             </Button>
           </div>
         </div>

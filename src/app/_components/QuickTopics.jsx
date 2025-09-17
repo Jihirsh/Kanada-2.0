@@ -1,5 +1,4 @@
 import { Atom, Apple, Zap, Telescope } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 
 const topics = [
   {
@@ -24,9 +23,22 @@ const topics = [
   },
 ];
 
+// custom card component cause shadcn gives extra padding on top and bottom for some reason
+const Card = ({ children, className }) => (
+  <div
+    className={`rounded-2xl border p-0 bg-background ${className}`}
+  >
+    {children}
+  </div>
+);
+
+const CardContent = ({ children, className }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+
 export const QuickTopics = () => {
   return (
-    <div className="px-8 pb-12 pt-24">
+    <div className="px-8 pb-12 pt-24 w-full">
       <h2 className="text-2xl font-semibold text-foreground mb-8 text-center">
         Quick Topics
       </h2>
@@ -37,7 +49,7 @@ export const QuickTopics = () => {
             key={topic.title}
             className="[background:var(--gradient-card)] border-border hover:bg-accent transition-all duration-300 cursor-pointer group [box-shadow:var(--shadow-elegant)] hover:[box-shadow:var(--shadow-glow)]"
           >
-            <CardContent className="p-6 text-center">
+            <CardContent className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 bg-accent rounded-2xl flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                 <topic.icon
                   size={32}

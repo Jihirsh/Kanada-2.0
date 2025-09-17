@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import ChatInputBox from "./_components/ChatInputBox"
 import { QuickTopics } from "./_components/QuickTopics"
 
