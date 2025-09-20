@@ -80,16 +80,16 @@ function ChatInputBox() {
           
           {/* Right side icons */}
           <div className="flex gap-2">
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
               <Cpu size={18} />
             </Button>
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
               <SquareRadical size={18} />
             </Button>
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0">
+            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
               <Paperclip size={18} />
             </Button>
-            <Button size="sm" variant="default" className="h-10 w-10 p-0 bg-primary text-primary-foreground">
+            <Button size="sm" variant="default" className="h-10 w-10 p-0 bg-primary text-primary-foreground cursor-pointer">
               <AudioLines size={18} />
             </Button>
           </div>
