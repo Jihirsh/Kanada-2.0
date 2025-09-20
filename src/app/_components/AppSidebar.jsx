@@ -123,7 +123,7 @@ function AppSidebar() {
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <SidebarTrigger className="hover:bg-foreground" />
+                <SidebarTrigger />
               </div>
             ) : (
               <Button className="w-full bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 gap-2">

@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  ArrowRight,
   AudioLines,
+  ArrowUp,
   FlaskConical,
   Cpu,
   Paperclip,
@@ -11,29 +10,27 @@ import {
   SquareRadical,
   Orbit,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 function ChatInputBox() {
-  const [userSearchInput, setUserSearchInput] = useState();
-  const [searchType, setSearchType] = useState("search");
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const [mode, setMode] = useState("search");
+  const [userSearchInput, setUserSearchInput] = useState("");
 
+  const hasInput = userSearchInput.trim().length > 0;
+
+  const handleInputChange = (e) => {
+    setUserSearchInput(e.target.value);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full mt-20">
-      
       {/* Logo and Title */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-4 mb-6">
@@ -43,55 +40,95 @@ function ChatInputBox() {
           <h1 className="text-5xl font-bold text-foreground">Kanada</h1>
         </div>
         <p className="p-2 text-xl text-muted-foreground max-w-2xl">
-          Your AI-powered physics companion for learning, problem-solving, and exploration
+          Your AI-powered physics companion for learning, problem-solving, and
+          exploration
         </p>
       </div>
-      
-      {/* Search Bar */}
+
+      {/* Input Section */}
       <div className="w-full max-w-4xl mb-6 px-6">
-        <Input
-          type="text"
-          placeholder={mode === "research" ? "Responds in a way to help you learn" : "Ask Anything"}
-          className="w-full h-16 px-6 text-lg bg-searchbar border-sear rounded-2xl"
-        />
-      </div>
-      {/* Controls Row */}
-      <div className="w-full max-w-4xl mb-8 px-6">
-        <div className="flex items-center justify-between">
-          {/* Search/Research buttons */}
-          <div className="flex gap-2">
-            <Button
-              variant={mode === "search" ? "default" : "outline"}
-              className="gap-2 h-10 px-4 cursor-pointer"
-              onClick={() => setMode("search")}
-            >
-              <SearchCode size={16} />
-              Search
-            </Button>
-            <Button
-              variant={mode === "research" ? "default" : "outline"}
-              className="gap-2 h-10 px-4 cursor-pointer"
-              onClick={() => setMode("research")}
-            >
-              <FlaskConical size={16} />
-              Research
-            </Button>
-          </div>
-          
-          {/* Right side icons */}
-          <div className="flex gap-2">
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
-              <Cpu size={18} />
-            </Button>
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
-              <SquareRadical size={18} />
-            </Button>
-            <Button size="sm" variant="ghost" className="h-10 w-10 p-0 cursor-pointer">
-              <Paperclip size={18} />
-            </Button>
-            <Button size="sm" variant="default" className="h-10 w-10 p-0 bg-primary text-primary-foreground cursor-pointer">
-              <AudioLines size={18} />
-            </Button>
+        <div className="flex flex-col w-full bg-searchbar border border-white/15 rounded-3xl px-4 py-4 gap-2">
+          {/* Input field */}
+          <Input
+            type="text"
+            placeholder={
+              mode === "research"
+                ? "Responds in a way to help you learn"
+                : "Ask Anything"
+            }
+            value={userSearchInput}
+            onChange={handleInputChange}
+            className="w-full h-12 border-0 bg-transparent focus-visible:ring-0 text-lg placeholder:text-muted-foreground"
+          />
+
+          {/* Buttons */}
+          <div className="flex items-center justify-between mt-2">
+            {/* Search/Research toggle */}
+            <div className="flex gap-2">
+              <Button
+                variant={mode === "search" ? "default" : "outline"}
+                size="sm"
+                className="gap-1 h-9 px-3 cursor-pointer"
+                onClick={() => setMode("search")}
+              >
+                <SearchCode size={16} />
+                Search
+              </Button>
+              <Button
+                variant={mode === "research" ? "default" : "outline"}
+                size="sm"
+                className="gap-1 h-9 px-3 cursor-pointer"
+                onClick={() => setMode("research")}
+              >
+                <FlaskConical size={16} />
+                Research
+              </Button>
+            </div>
+
+            {/* Right side icons */}
+            <div className="flex gap-2">
+              {!hasInput ? (
+                <>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="flex items-center justify-center h-9 w-9 hover:bg-accent rounded-full cursor-pointer focus-visible:ring-0">
+                      <Cpu size={18} />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Gemini</DropdownMenuItem>
+                      <DropdownMenuItem>GPT 4.1</DropdownMenuItem>
+                      <DropdownMenuItem>Kanada - coming soon</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full cursor-pointer"
+                  >
+                    <SquareRadical size={18} />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full cursor-pointer"
+                  >
+                    <Paperclip size={18} />
+                  </Button>
+                </>
+              ) : null}
+              
+              <Button
+                size="icon"
+                variant="default"
+                className="h-9 w-9 bg-primary text-primary-foreground rounded-full cursor-pointer transition-all duration-200"
+              >
+                {hasInput ? (
+                  <ArrowUp size={18} className="text-background" />
+                ) : (
+                  <AudioLines size={18} className="text-background" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

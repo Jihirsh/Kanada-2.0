@@ -43,6 +43,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --color-special: oklch(0.1913 0 0);
   --color-searchbar: oklch(0.2686 0 0);
+  --color-downtown: oklch(0.3678 0.0053 271.27);
 
   --gradient-primary: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
   --gradient-card: linear-gradient(135deg, hsl(0 0% 6%), hsl(0 0% 12%));

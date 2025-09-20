@@ -1,8 +1,11 @@
 import React from 'react'
+import Discover from '../_components/Discover'
 
 function page() {
   return (
-    <div>page</div>
+    <div className='w-full'>
+      <Discover />
+    </div>
   )
 }
 
