@@ -38,7 +38,7 @@ const CardContent = ({ children, className }) => (
 
 export const QuickTopics = () => {
   return (
-    <div className="px-8 pb-12 pt-24 w-full">
+    <div className="hidden md:block px-8 pb-12 pt-24 w-full">
       <h2 className="text-2xl font-semibold text-foreground mb-8 text-center">
         Quick Topics
       </h2>

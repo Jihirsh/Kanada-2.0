@@ -4,18 +4,23 @@ import {
   AudioLines,
   ArrowUp,
   FlaskConical,
-  Cpu,
+  Rocket,
   Paperclip,
   SearchCode,
   SquareRadical,
   Orbit,
+  Sparkles,
 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -45,7 +50,7 @@ function ChatInputBox() {
         </p>
       </div>
 
-      {/* Input Section */}
+      {/* Input Section - make it go at bottom of screen on small screens */}
       <div className="w-full max-w-4xl mb-6 px-6">
         <div className="flex flex-col w-full bg-searchbar border border-white/15 rounded-3xl px-4 py-4 gap-2">
           {/* Input field */}
@@ -63,60 +68,60 @@ function ChatInputBox() {
 
           {/* Buttons */}
           <div className="flex items-center justify-between mt-2">
-            {/* Search/Research toggle */}
-            <div className="flex gap-2">
-              <Button
-                variant={mode === "search" ? "default" : "outline"}
-                size="sm"
-                className="gap-1 h-9 px-3 cursor-pointer"
-                onClick={() => setMode("search")}
-              >
-                <SearchCode size={16} />
-                Search
-              </Button>
-              <Button
-                variant={mode === "research" ? "default" : "outline"}
-                size="sm"
-                className="gap-1 h-9 px-3 cursor-pointer"
-                onClick={() => setMode("research")}
-              >
-                <FlaskConical size={16} />
-                Research
-              </Button>
-            </div>
-
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="default" className="rounded-full">
+                  {mode === "research" ? (
+                    <FlaskConical size={18} />
+                  ) : (
+                    <Rocket size={18} />
+                  )}
+                  {mode === "research" ? (
+                    <span>Research</span>
+                  ) : (
+                    <span>Search</span>
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="start">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem onClick={() => setMode("search")}>
+                    <Rocket size={16} /> Search
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setMode("research")}>
+                    <FlaskConical size={16} /> Research
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel className="flex items-center gap-2">
+                    <Sparkles size={16} /> Models
+                  </DropdownMenuLabel>
+                  <DropdownMenuItem>Gemini</DropdownMenuItem>
+                  <DropdownMenuItem>GPT 4.1</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    Kanada <span className="text-ring">- coming soon</span>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
             {/* Right side icons */}
-            <div className="flex gap-2">
-              {!hasInput ? (
-                <>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="flex items-center justify-center h-9 w-9 hover:bg-accent rounded-full cursor-pointer focus-visible:ring-0">
-                      <Cpu size={18} />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem>Gemini</DropdownMenuItem>
-                      <DropdownMenuItem>GPT 4.1</DropdownMenuItem>
-                      <DropdownMenuItem>Kanada - coming soon</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+            <div className="flex gap-3">
+              <Button
+                size="icon"
+                variant="ghost"
+                className="hidden md:flex h-9 w-9 rounded-full cursor-pointer"
+              >
+                <SquareRadical size={18} />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full cursor-pointer"
+              >
+                <Paperclip size={18} />
+              </Button>
 
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full cursor-pointer"
-                  >
-                    <SquareRadical size={18} />
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full cursor-pointer"
-                  >
-                    <Paperclip size={18} />
-                  </Button>
-                </>
-              ) : null}
-              
               <Button
                 size="icon"
                 variant="default"

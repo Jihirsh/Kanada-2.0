@@ -143,3 +143,5 @@ function AppSidebar() {
 }
 
 export default AppSidebar;
+
+// when it is in collapsed state, and screen size changes from large to small, and then when u open the sidebar using sidebartrigger, it only shows icons even when it is expanded and there is enough space to show names of sections - fix this
