@@ -1,4 +1,4 @@
-import { Atom, Calculator, Eye, Telescope, Waves, Zap } from "lucide-react";
+import { Atom, BookOpen, Calculator, Eye, FlaskConical, Telescope, Waves, Zap } from "lucide-react";
 import React from "react";
 
 const courses = [
@@ -123,41 +123,17 @@ const CourseCard = ({ course }) => {
         </p>
 
         <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-          <span className="flex items-center">
-            <svg
-              className="w-4 h-4 mr-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-              />
-            </svg>
+          <span className="flex items-end gap-1">
+            <BookOpen size={16} />
             {lessons} Lessons
           </span>
-          <span className="flex items-center">
-            <svg
-              className="w-4 h-4 mr-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-              />
-            </svg>
+          <span className="flex items-center gap-1">
+            <FlaskConical size={16} />
             {projects} Projects
           </span>
         </div>
 
-        <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors group-hover:bg-black">
+        <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors group-hover:bg-black cursor-pointer">
           Start Course
         </button>
       </div>
@@ -167,8 +143,8 @@ const CourseCard = ({ course }) => {
 
 function Discover() {
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white">
-      <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 mt-20">
+    <div className="flex flex-col items-center p-6 bg-white">
+      <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 mt-15">
         Master Physics
       </h1>
       <p className="text-xl text-center text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -177,10 +153,10 @@ function Discover() {
         structured learning paths and interactive content.
       </p>
       <div className="flex justify-center gap-4 mb-8">
-        <button className="px-8 py-4 font-semibold bg-black text-white rounded-lg">
+        <button className="px-8 py-4 font-semibold bg-black text-white rounded-lg cursor-pointer">
           Start Learning
         </button>
-        <button className="border-2 border-gray-300 px-8 py-4 font-semibold bg-gray-100 text-gray-600 rounded-lg">
+        <button className="border-2 border-gray-300 px-8 py-4 font-semibold bg-gray-100 text-gray-600 rounded-lg cursor-pointer">
           Explore Resources
         </button>
       </div>

@@ -70,7 +70,7 @@ function ChatInputBox() {
           <div className="flex items-center justify-between mt-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="default" className="rounded-full">
+                <Button variant="default" className="rounded-full cursor-pointer">
                   {mode === "research" ? (
                     <FlaskConical size={18} />
                   ) : (
@@ -110,16 +110,17 @@ function ChatInputBox() {
               <Button
                 size="icon"
                 variant="ghost"
-                className="hidden md:flex h-9 w-9 rounded-full cursor-pointer"
+                className="hidden md:flex h-9 w-9 rounded-full cursor-pointer border border-white/15"
               >
                 <SquareRadical size={18} />
               </Button>
               <Button
                 size="icon"
                 variant="ghost"
-                className="h-9 w-9 rounded-full cursor-pointer"
+                className="h-9 w-9 rounded-full cursor-pointer border border-white/15"
               >
                 <Paperclip size={18} />
+                
               </Button>
 
               <Button

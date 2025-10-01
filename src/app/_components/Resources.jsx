@@ -169,7 +169,7 @@ const Resources = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white px-0 md:px-4">
       {/* Hero Section */}
       <section className="bg-black text-white py-16 rounded-b-[20px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

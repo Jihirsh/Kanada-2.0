@@ -240,8 +240,9 @@ const Pomodoro = () => {
           <div className="flex justify-center space-x-4 mb-8">
             <Button
               onClick={toggleTimer}
+              variant="outline"
               size="lg"
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 cursor-pointer"
             >
               {isActive ? (
                 <Pause className="w-5 h-5" />
@@ -253,9 +254,8 @@ const Pomodoro = () => {
 
             <Button
               onClick={resetTimer}
-              variant="outline"
               size="lg"
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 border border-black/15 cursor-pointer"
             >
               <RotateCcw className="w-5 h-5" />
               <span>Reset</span>
@@ -263,7 +263,7 @@ const Pomodoro = () => {
           </div>
 
           {/* Stats */}
-          <div className="bg-gray-50 rounded-lg p-6">
+          <div className="bg-gray-200 rounded-lg p-6">
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900">

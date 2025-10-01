@@ -36,7 +36,7 @@ export const PomodoroSettings = ({
     <div className="absolute top-0 right-0 bg-white rounded-lg shadow-xl border p-6 w-80 z-20">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold text-gray-900">Timer Settings</h3>
-        <Button onClick={onToggle} variant="ghost" size="sm">
+        <Button onClick={onToggle} variant="outline" size="sm" className="cursor-pointer">
           <X className="w-4 h-4" />
         </Button>
       </div>
@@ -96,26 +96,28 @@ export const PomodoroSettings = ({
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               {completionSoundEnabled ? (
-                <Volume2 className="w-4 h-4" />
+                <Volume2 className="w-4 h-4 text-background" />
               ) : (
-                <VolumeX className="w-4 h-4" />
+                <VolumeX className="w-4 h-4 text-background" />
               )}
               <span className="text-sm text-gray-600">Completion Sound</span>
             </div>
             <Switch
               checked={completionSoundEnabled}
               onCheckedChange={onCompletionSoundToggle}
+              className="cursor-pointer"
             />
           </div>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Volume2 className="w-4 h-4" />
+              <Volume2 className="w-4 h-4 text-background" />
               <span className="text-sm text-gray-600">Background Music</span>
             </div>
             <Switch
               checked={backgroundMusicEnabled}
               onCheckedChange={onBackgroundMusicToggle}
+              className="cursor-pointer"
             />
           </div>
 
@@ -128,18 +130,20 @@ export const PomodoroSettings = ({
                 <Button
                   onClick={() => onBackgroundMusicTypeChange("rain")}
                   variant={
-                    backgroundMusicType === "rain" ? "default" : "outline"
+                    backgroundMusicType === "rain" ? "outline" : "default"
                   }
                   size="sm"
+                  className="cursor-pointer border border-black/20"
                 >
                   Rain
                 </Button>
                 <Button
                   onClick={() => onBackgroundMusicTypeChange("lofi")}
                   variant={
-                    backgroundMusicType === "lofi" ? "default" : "outline"
+                    backgroundMusicType === "lofi" ? "outline" : "default"
                   }
                   size="sm"
+                  className="cursor-pointer border border-black/20"
                 >
                   Lo-Fi
                 </Button>
