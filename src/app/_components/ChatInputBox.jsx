@@ -51,7 +51,7 @@ function ChatInputBox() {
       </div>
 
       {/* Input Section - make it go at bottom of screen on small screens */}
-      <div className="w-full max-w-4xl mb-6 px-6">
+      <div className="w-full max-w-4xl mb-6 px-6 fixed bottom-0 left-0 right-0 z-50 sm:static sm:mb-6 sm:px-6">
         <div className="flex flex-col w-full bg-searchbar border border-white/15 rounded-3xl px-4 py-4 gap-2">
           {/* Input field */}
           <Input
@@ -70,7 +70,10 @@ function ChatInputBox() {
           <div className="flex items-center justify-between mt-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="default" className="rounded-full cursor-pointer">
+                <Button
+                  variant="default"
+                  className="rounded-full cursor-pointer"
+                >
                   {mode === "research" ? (
                     <FlaskConical size={18} />
                   ) : (
@@ -120,7 +123,6 @@ function ChatInputBox() {
                 className="h-9 w-9 rounded-full cursor-pointer border border-white/15"
               >
                 <Paperclip size={18} />
-                
               </Button>
 
               <Button
